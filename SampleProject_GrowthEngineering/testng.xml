@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BackBase Regression Suite">
+	<test name="New Computer Addition">
+	    <parameter name="browserType" value="Firefox"></parameter> 
+		<classes>
+			<class
+				name="com.growthengineering.Scenario1_Test_Cases_All_Sub_Links_Verification" />
+				name="com.growthengineering.Scenario2_Contact_Us_Form_Validations" />
+		</classes>
+	</test>
+</suite> 

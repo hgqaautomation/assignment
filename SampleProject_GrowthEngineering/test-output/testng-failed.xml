@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [BackBase Regression Suite]">
+  <parameter name="browserType" value="Firefox"/>
+  <test name="New Computer Addition(failed)">
+    <parameter name="browserType" value="Firefox"/>
+    <classes>
+      <class name="com.growthengineering.Scenario2_Contact_Us_Form_Validations">
+        <methods>
+          <include name="tearDown"/>
+          <include name="validateMandatoryFirstName"/>
+          <include name="openWebSite"/>
+          <include name="validate_GenericValidationMsg"/>
+        </methods>
+      </class> <!-- com.growthengineering.Scenario2_Contact_Us_Form_Validations -->
+    </classes>
+  </test> <!-- New Computer Addition(failed) -->
+</suite> <!-- Failed suite [BackBase Regression Suite] -->
