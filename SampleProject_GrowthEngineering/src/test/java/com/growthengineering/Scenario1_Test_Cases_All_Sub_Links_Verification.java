@@ -25,6 +25,7 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@BeforeMethod()
 	public void openWebSite()
 	{
+		
 		browserSetUp();
 	}
 	
@@ -35,51 +36,51 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_Solution_SubLinks() throws InterruptedException
 	{
-		System.out.println("Inside Solutions menu Sub links verification tests");
-		List<String> expPageTitles = Arrays.asList("The #1 Learning Management System for Employee Engagement",
-				"Genie - a collaborative content authoring tool",
-				"The Knowledge Arcade - Growth Engineering",
-				"eLearning - Training Content That Inspires Learners");
-		
-		List<String> actSubLinkTitles=new ArrayList<String>();
-		Actions builder= new Actions(driver);
-		WebElement solutionsLink= driver.findElement(By.xpath("//span[text()='Solutions']"));
-		builder.moveToElement(solutionsLink).build().perform();
-		List<WebElement> allSolutionLinks=driver.findElements(By.xpath("//span[text()='Solutions']/parent::a//following-sibling::ul//li//a"));
-		int linksCount = allSolutionLinks.size();
-		System.out.println("Count of links are " +allSolutionLinks.size());
-		String[] links = new String[linksCount];
-		
-		// print all the links from webpage
-		
-		for (int i = 0; i < linksCount; i++) {
-			links[i] = allSolutionLinks.get(i).getAttribute("href");
-			System.out.println(allSolutionLinks.get(i).getAttribute("href"));
-		}
-		
-		// navigate to each Link on the webpage
-		
-		for (int i = 0; i < linksCount; i++) 
+		try
 		{
-			driver.navigate().to(links[i]);
-			actSubLinkTitles.add(driver.getTitle());
-			System.out.println("Title is ---->" + driver.getTitle());
+			System.out.println("Inside Solutions menu Sub links verification tests");
+			List<String> expPageTitles = Arrays.asList("The #1 Learning Management System for Employee Engagement",
+					"Genie - a collaborative content authoring tool", "The Knowledge Arcade - Growth Engineering",
+					"eLearning - Training Content That Inspires Learners");
+
+			List<String> actSubLinkTitles = new ArrayList<String>();
+			Actions builder = new Actions(driver);
+			WebElement solutionsLink = driver.findElement(By.xpath("//span[text()='Solutions']"));
+			builder.moveToElement(solutionsLink).build().perform();
+			List<WebElement> allSolutionLinks = driver
+					.findElements(By.xpath("//span[text()='Solutions']/parent::a//following-sibling::ul//li//a"));
+			int linksCount = allSolutionLinks.size();
+			System.out.println("Count of links are " + allSolutionLinks.size());
+			String[] links = new String[linksCount];
+
+			// print all the links from webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				links[i] = allSolutionLinks.get(i).getAttribute("href");
+				System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+			}
+
+			// navigate to each Link on the webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				driver.navigate().to(links[i]);
+				actSubLinkTitles.add(driver.getTitle());
+				System.out.println("Title is ---->" + driver.getTitle());
+			}
+
+			for (int i = 0; i < expPageTitles.size(); i++) {
+				if (actSubLinkTitles.get(i).equals(expPageTitles.get(i))) {
+					System.out.println("Title matches for : " + actSubLinkTitles.get(i));
+				}
+
+				else {
+					System.out.println("Title did not match for : " + actSubLinkTitles.get(i));
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 
-				
-		for(int i=0;i<expPageTitles.size();i++)
-		{
-			if(actSubLinkTitles.get(i).equals(expPageTitles.get(i)))
-			{
-				System.out.println("Title matches for : " + actSubLinkTitles.get(i));
-			}
-			
-			else
-			{
-				System.out.println("Title did not match for : " + actSubLinkTitles.get(i));
-			}
-		}
-		
 	}
 	
 	/*
@@ -90,44 +91,49 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_LearnerEngagement_SubLinks() throws InterruptedException
 	{
-		System.out.println("Inside Learner Engagement menu Sub links verification tests");
-		List<String> expPageTitles = Arrays.asList("Gamification in Online Learning - the #1 Gamified LMS!",
-				"Social Learning Platform - The Academy LMS",
-				"Epic Meaning: How We Build Ideal Learning Environments",
-				"Mobile Learning - Training Solutions for the Mobile Generation");
-		
-		List<String> actSubLinkTitles=new ArrayList<String>();
-		//Actions builder= new Actions(driver);
-		//WebElement solutionsLink= driver.findElement(By.xpath("//span[text()='Learner Engagement']"));
-		//builder.moveToElement(solutionsLink).build().perform();
-		List<WebElement> allSolutionLinks=driver.findElements(By.xpath("//span[text()='Learner Engagement']/parent::a//following-sibling::ul//li//a"));
-		int linksCount = allSolutionLinks.size();
-		System.out.println("Count of links are " +allSolutionLinks.size());
-		String[] links = new String[linksCount];
-		
-		// print all the links from webpage
-		
-		for (int i = 0; i < linksCount; i++) {
-			links[i] = allSolutionLinks.get(i).getAttribute("href");
-			System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+		try {
+			System.out.println("Inside Learner Engagement menu Sub links verification tests");
+			List<String> expPageTitles = Arrays.asList("Gamification in Online Learning - the #1 Gamified LMS!",
+					"Social Learning Platform - The Academy LMS",
+					"Epic Meaning: How We Build Ideal Learning Environments",
+					"Mobile Learning - Training Solutions for the Mobile Generation");
+
+			List<String> actSubLinkTitles = new ArrayList<String>();
+			// Actions builder= new Actions(driver);
+			// WebElement solutionsLink=
+			// driver.findElement(By.xpath("//span[text()='Learner
+			// Engagement']"));
+			// builder.moveToElement(solutionsLink).build().perform();
+			List<WebElement> allSolutionLinks = driver.findElements(
+					By.xpath("//span[text()='Learner Engagement']/parent::a//following-sibling::ul//li//a"));
+			int linksCount = allSolutionLinks.size();
+			System.out.println("Count of links are " + allSolutionLinks.size());
+			String[] links = new String[linksCount];
+
+			// print all the links from webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				links[i] = allSolutionLinks.get(i).getAttribute("href");
+				System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+			}
+
+			// navigate to each Link on the webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				driver.navigate().to(links[i]);
+				actSubLinkTitles.add(driver.getTitle());
+				System.out.println("Title is ---->" + driver.getTitle());
+			}
+
+			for (int i = 0; i < expPageTitles.size(); i++) {
+				Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));
+			}
+
+			System.out.println("All links of Learner Engagement are navigated successfully ");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		// navigate to each Link on the webpage
-		
-		for (int i = 0; i < linksCount; i++) 
-		{
-			driver.navigate().to(links[i]);
-			actSubLinkTitles.add(driver.getTitle());
-			System.out.println("Title is ---->" + driver.getTitle());
-		}
-				
-		for(int i=0;i<expPageTitles.size();i++)
-		{			
-			Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));			
-		}
-		
-		System.out.println("All links of Learner Engagement are navigated successfully ");
-		
 	}
 	
 	
@@ -139,39 +145,42 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_SuccessStories_SubLinks() throws InterruptedException
 	{
-		System.out.println("Inside Learner Engagement menu Sub links verification tests");
-		List<String> expPageTitles = Arrays.asList("Our Clients: Growth Engineering - Engaging Online Learning",
-				"Award-Winning - Growth Engineering");
-		
-		List<String> actSubLinkTitles=new ArrayList<String>();
-		List<WebElement> allSolutionLinks=driver.findElements(By.xpath("//span[text()='Success Stories']/parent::a//following-sibling::ul//li//a"));
-		int linksCount = allSolutionLinks.size();
-		System.out.println("Count of links are " +allSolutionLinks.size());
-		String[] links = new String[linksCount];
-		
-		// print all the links from webpage
-		
-		for (int i = 0; i < linksCount; i++) {
-			links[i] = allSolutionLinks.get(i).getAttribute("href");
-			System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+		try {
+			System.out.println("Inside Learner Engagement menu Sub links verification tests");
+			List<String> expPageTitles = Arrays.asList("Our Clients: Growth Engineering - Engaging Online Learning",
+					"Award-Winning - Growth Engineering");
+
+			List<String> actSubLinkTitles = new ArrayList<String>();
+			List<WebElement> allSolutionLinks = driver
+					.findElements(By.xpath("//span[text()='Success Stories']/parent::a//following-sibling::ul//li//a"));
+			int linksCount = allSolutionLinks.size();
+			System.out.println("Count of links are " + allSolutionLinks.size());
+			String[] links = new String[linksCount];
+
+			// print all the links from webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				links[i] = allSolutionLinks.get(i).getAttribute("href");
+				System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+			}
+
+			// navigate to each Link on the webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				driver.navigate().to(links[i]);
+				actSubLinkTitles.add(driver.getTitle());
+				System.out.println("Title is ---->" + driver.getTitle());
+			}
+
+			for (int i = 0; i < expPageTitles.size(); i++) {
+				Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));
+			}
+
+			System.out.println("All links of Success Stories are navigated successfully ");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		// navigate to each Link on the webpage
-		
-		for (int i = 0; i < linksCount; i++) 
-		{
-			driver.navigate().to(links[i]);
-			actSubLinkTitles.add(driver.getTitle());
-			System.out.println("Title is ---->" + driver.getTitle());
-		}
-				
-		for(int i=0;i<expPageTitles.size();i++)
-		{			
-			Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));			
-		}
-		
-		System.out.println("All links of Success Stories are navigated successfully ");
-		
 	}
 	
 	/*
@@ -182,41 +191,45 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_Resources_SubLinks() throws InterruptedException
 	{
-		System.out.println("Inside Learner Engagement menu Sub links verification tests");
-		List<String> expPageTitles = Arrays.asList("GE TV - Growth Engineering",
-				"Archives of Awesome - Growth Engineering",
-				"Our Blog - Growth Engineering",
-				"Webinars - Growth Engineering");
-		
-		List<String> actSubLinkTitles=new ArrayList<String>();
-		List<WebElement> allSolutionLinks=driver.findElements(By.xpath("//span[text()='Resources']/parent::a//following-sibling::ul//li//a"));
-		int linksCount = allSolutionLinks.size();
-		System.out.println("Count of links are " +allSolutionLinks.size());
-		String[] links = new String[linksCount];
-		
-		// print all the links from webpage
-		
-		for (int i = 0; i < linksCount; i++) {
-			links[i] = allSolutionLinks.get(i).getAttribute("href");
-			System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+		try {
+			System.out.println("Inside Learner Engagement menu Sub links verification tests");
+			List<String> expPageTitles = Arrays.asList("GE TV - Growth Engineering",
+					"Archives of Awesome - Growth Engineering", "Our Blog - Growth Engineering",
+					"Webinars - Growth Engineering");
+
+			List<String> actSubLinkTitles = new ArrayList<String>();
+			List<WebElement> allSolutionLinks = driver
+					.findElements(By.xpath("//span[text()='Resources']/parent::a//following-sibling::ul//li//a"));
+			int linksCount = allSolutionLinks.size();
+			System.out.println("Count of links are " + allSolutionLinks.size());
+			String[] links = new String[linksCount];
+
+			// print all the links from webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				links[i] = allSolutionLinks.get(i).getAttribute("href");
+				System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+			}
+
+			// navigate to each Link on the webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				driver.navigate().to(links[i]);
+				actSubLinkTitles.add(driver.getTitle());
+				System.out.println("Title is ---->" + driver.getTitle());
+			}
+
+			for (int i = 0; i < expPageTitles.size(); i++) {
+				Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));
+			}
+
+			System.out.println("All links of Resources are navigated successfully ");
+
 		}
-		
-		// navigate to each Link on the webpage
-		
-		for (int i = 0; i < linksCount; i++) 
-		{
-			driver.navigate().to(links[i]);
-			actSubLinkTitles.add(driver.getTitle());
-			System.out.println("Title is ---->" + driver.getTitle());
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-				
-		for(int i=0;i<expPageTitles.size();i++)
-		{			
-			Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));			
-		}
-		
-		System.out.println("All links of Resources are navigated successfully ");
-		
 	}
 	
 	/*
@@ -227,42 +240,45 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_AboutUs_SubLinks() throws InterruptedException
 	{
-		System.out.println("Inside Learner Engagement menu Sub links verification tests");
-		List<String> expPageTitles = Arrays.asList("Online Learning Superheroes: About Growth Engineering",
-				"Growth Engineering Jobs - Growth Engineering",
-				"GDPR: Growth Engineering Keep Your Secret Identity Secure");
-		
-		List<String> actSubLinkTitles=new ArrayList<String>();
-		List<WebElement> allSolutionLinks=driver.findElements(By.xpath("//span[text()='About Us']/parent::a//following-sibling::ul//li//a"));
-		int linksCount = allSolutionLinks.size();
-		System.out.println("Count of links are " +allSolutionLinks.size());
-		String[] links = new String[linksCount];
-		
-		// print all the links from webpage
-		
-		for (int i = 0; i < linksCount; i++) {
-			links[i] = allSolutionLinks.get(i).getAttribute("href");
-			System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+		try {
+			System.out.println("Inside Learner Engagement menu Sub links verification tests");
+			List<String> expPageTitles = Arrays.asList("Online Learning Superheroes: About Growth Engineering",
+					"Growth Engineering Jobs - Growth Engineering",
+					"GDPR: Growth Engineering Keep Your Secret Identity Secure");
+
+			List<String> actSubLinkTitles = new ArrayList<String>();
+			List<WebElement> allSolutionLinks = driver
+					.findElements(By.xpath("//span[text()='About Us']/parent::a//following-sibling::ul//li//a"));
+			int linksCount = allSolutionLinks.size();
+			System.out.println("Count of links are " + allSolutionLinks.size());
+			String[] links = new String[linksCount];
+
+			// print all the links from webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				links[i] = allSolutionLinks.get(i).getAttribute("href");
+				System.out.println(allSolutionLinks.get(i).getAttribute("href"));
+			}
+
+			// navigate to each Link on the webpage
+
+			for (int i = 0; i < linksCount; i++) {
+				driver.navigate().to(links[i]);
+				actSubLinkTitles.add(driver.getTitle());
+				System.out.println("Title is ---->" + driver.getTitle());
+			}
+
+			for (int i = 0; i < expPageTitles.size(); i++) {
+				Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));
+			}
+
+			System.out.println("All links of Resources are navigated successfully ");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		// navigate to each Link on the webpage
-		
-		for (int i = 0; i < linksCount; i++) 
-		{
-			driver.navigate().to(links[i]);
-			actSubLinkTitles.add(driver.getTitle());
-			System.out.println("Title is ---->" + driver.getTitle());
-		}
-				
-		for(int i=0;i<expPageTitles.size();i++)
-		{			
-			Assert.assertEquals(actSubLinkTitles.get(i), expPageTitles.get(i));			
-		}
-		
-		System.out.println("All links of Resources are navigated successfully ");
-		
 	}
-	
+
 	/*
 	 * Test Case 6:The following test will verify the working of 'Get In Touch' link
 	 * 
@@ -271,14 +287,20 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@Test
 	public void verify_GetInTouch_Link() throws InterruptedException
 	{
-		System.out.println("Inside Contact Us verification test");
-		String expPageTitle = "Contact the Engagement A-Team! - Growth Engineering";
-		WebElement contactUS_Link=driver.findElement(By.xpath("//span[text()='Get in Touch']"));
-		contactUS_Link.click();
-		String contactUS_title=driver.getTitle();
-		Assert.assertEquals(expPageTitle, contactUS_title);
-		System.out.println("Contact us link clicked successfully");
-		
+		try {
+			System.out.println("Inside Contact Us verification test");
+			String expPageTitle = "Contact the Engagement A-Team! - Growth Engineering";
+			WebElement contactUS_Link = driver.findElement(By.xpath("//span[text()='Get in Touch']"));
+			contactUS_Link.click();
+			String contactUS_title = driver.getTitle();
+			Assert.assertEquals(expPageTitle, contactUS_title);
+			System.out.println("Contact us link clicked successfully");
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 	
 	/*
@@ -290,8 +312,12 @@ public class Scenario1_Test_Cases_All_Sub_Links_Verification extends BaseSetUp{
 	@AfterMethod()
 	public void tearDown()
 	{
-		System.out.println("Inside after method");
-		driver.quit();
+		try {
+			System.out.println("Inside after method");
+			driver.quit();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
